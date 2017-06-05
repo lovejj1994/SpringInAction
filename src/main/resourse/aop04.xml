@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+   <bean id="mother" class="spring.aop04.People"></bean>
+   <bean id="teacher" class="spring.aop04.People2"></bean>
+   
+   
+   <!-- types-matching中注意要以+结尾 -->
+   <aop:config>
+   		<aop:aspect>
+   			<aop:declare-parents types-matching="spring.aop04.Mother+" implement-interface="spring.aop04.Teacher" delegate-ref="teacher"/>
+   		</aop:aspect>
+   </aop:config>
+
+</beans>
